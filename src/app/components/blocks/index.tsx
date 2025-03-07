@@ -1,21 +1,22 @@
 import { RichTextBlock } from "./rich-text-block";
 import { TestimonialBlock } from "./testimonial-block";
-import { SpoilerBlock } from "./spoiler-block";
+// import { SpoilerBlock } from "./spoiler-block";
 
-type TeamPageBlock = SpoilerBlock | TestimonialBlock | RichTextBlock;
+// type TeamPageBlock = SpoilerBlock | TestimonialBlock | RichTextBlock;
+type TeamPageBlock =TestimonialBlock | RichTextBlock;
 
 const blocks: Record<
   TeamPageBlock["__component"],
   React.ComponentType<{ block: TeamPageBlock }>
 > = {
-  "blocks.spoiler": ({ block }: { block: TeamPageBlock }) => (
-    <SpoilerBlock block={block as SpoilerBlock} />
-  ),
+  // "blocks.spoiler": ({ block }: { block: TeamPageBlock }) => (
+  //   <SpoilerBlock block={block as SpoilerBlock} key={"spoiler" + block.id} />
+  // ),
   "blocks.testimonial": ({ block }: { block: TeamPageBlock }) => (
-    <TestimonialBlock block={block as TestimonialBlock} />
+    <TestimonialBlock block={block as TestimonialBlock} key={"testimonial" + block.id} />
   ),
   "blocks.rich-text": ({ block }: { block: TeamPageBlock }) => (
-    <RichTextBlock block={block as RichTextBlock} />
+    <RichTextBlock block={block as RichTextBlock} key={"rich" + block.id} />
   ),
 };
 
